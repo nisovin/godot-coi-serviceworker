@@ -19,7 +19,7 @@ func _export_end() -> void:
 	if exporting_web:
 		var html := FileAccess.get_file_as_string(export_path)
 		var pos = html.find('<script src=')
-		html = html.insert(pos, '<script src="coi-serviceworker.min.js"></script>')
+		html = html.insert(pos, '<script src="' + JS_FILE + '"></script>')
 		var file := FileAccess.open(export_path, FileAccess.WRITE)
 		file.store_string(html)
 		file.close()
