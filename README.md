@@ -2,7 +2,7 @@
 
 This plugin makes use of the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) Javascript library to enable cross-origin isolation in Godot 4 games for situations in which you can't control the headers. In other words, it fixes the SharedArrayBuffer error.
 
-See also [this Godot proposal](https://github.com/godotengine/godot-proposals/issues/6616)
+See also [this Godot proposal](https://github.com/godotengine/godot-proposals/issues/6616).
 
 ## Important Note
 
