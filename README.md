@@ -11,7 +11,3 @@ If your web host allows you to set the proper headers, you should do that instea
 ## Usage
 
 Simply install this plugin and enable it in your project settings. When you export a Web build, the plugin will add the Javascript file to enable this feature. This script will reload the page on the user's first load to magically add the required COOP and COEP headers in a service worker. See the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) project page for more information.
-
-## Godot 3
-
-No Godot 3 version is provided, but the code should be compatible. You will just need to change `@tool` to `tool`.
