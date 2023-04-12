@@ -18,8 +18,8 @@ func _export_begin(features: PackedStringArray, is_debug: bool, path: String, fl
 func _export_end() -> void:
 	if exporting_web:
 		var html := FileAccess.get_file_as_string(export_path)
-		var pos = html.find('<script src=')
-		html = html.insert(pos, '<script src="' + JS_FILE + '"></script>')
+		var pos = html.find("<script src=")
+		html = html.insert(pos, "<script>" + EXTRA_SCRIPT + "</script>\n<script src=\"" + JS_FILE + "\"></script>\n")
 		var file := FileAccess.open(export_path, FileAccess.WRITE)
 		file.store_string(html)
 		file.close()
@@ -29,3 +29,10 @@ func _export_end() -> void:
 func _export_file(path: String, type: String, features: PackedStringArray) -> void:
 	if path.begins_with(plugin_path):
 		skip()
+
+const EXTRA_SCRIPT = """
+if (!window.SharedArrayBuffer) {
+	document.getElementById('status').style.display = 'none';
+	setTimeout(() => document.getElementById('status').style.display = '', 1500);
+}
+"""
