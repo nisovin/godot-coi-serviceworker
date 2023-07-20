@@ -11,3 +11,7 @@ If your web host allows you to set the proper headers, you should do that instea
 ## Usage
 
 Simply install this plugin and enable it in your project settings. When you export a Web build, the plugin will add the Javascript file to enable this feature. This script will reload the page on the user's first load to magically add the required COOP and COEP headers in a service worker. See the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) project page for more information.
+
+## Limitations
+
+There is a good chance that any host that embeds your game in an iframe within another page will still not work with this addon. If you were to open that embedded page into its own tab, it will probably work, but while it is embedded it won't.
