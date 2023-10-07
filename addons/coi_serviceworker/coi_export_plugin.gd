@@ -105,6 +105,16 @@ div {
 a {
 	font-size: 18pt;
 	color: #eaeaea;
+	background-color: #3b3943;
+	background-image: linear-gradient(to bottom, #403e48, #35333c);
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 3px;
+	text-decoration: none;
+}
+a:hover {
+	background-color: #403e48;
+	background-image: linear-gradient(to top, #403e48, #35333c);
 }
 </style>
 </head>
