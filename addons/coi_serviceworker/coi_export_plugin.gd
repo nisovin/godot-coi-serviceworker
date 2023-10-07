@@ -22,17 +22,12 @@ func _get_export_options(platform: EditorExportPlatform) -> Array[Dictionary]:
 		},
 		{
 			"option": {
-				"name": "generate_index_popout",
-				"type": TYPE_BOOL
+				"name": "iframe_breakout",
+				"type": TYPE_STRING,
+				"hint": PROPERTY_HINT_ENUM,
+				"hint_string": "Disabled,Same Tab,New Tab,New Window"
 			},
-			"default_value": false
-		},
-		{
-			"option": {
-				"name": "popout_window_instead_of_tab",
-				"type": TYPE_BOOL
-			},
-			"default_value": false
+			"default_value": "Disabled"
 		}
 	]
 
@@ -47,12 +42,17 @@ func _export_begin(features: PackedStringArray, is_debug: bool, path: String, fl
 		if not has_method("get_option") or get_option("include_coi_service_worker"):
 			exporting_web = true
 		export_path = path
-		if has_method("get_option") and get_option("generate_index_popout"):
+		if has_method("get_option") and get_option("iframe_breakout") != "Disabled":
 			if export_path.ends_with("index.html"):
 				push_error("ERROR: cannot export as index.html with generate_index_popout option set")
 			else:
 				var html = POPOUT_INDEX_HTML
-				if get_option("popout_window_instead_of_tab"):
+				var method = get_option("iframe_breakout")
+				if method == "Same Tab":
+					html = html.replace("__PARAMS__", "target=\"_parent\"")
+				elif method == "New Tab":
+					html = html.replace("__PARAMS__", "target=\"_blank\"")
+				elif method == "New Window":
 					var w = ProjectSettings.get_setting("display/window/size/window_width_override")
 					if w <= 0:
 						w = ProjectSettings.get_setting("display/window/size/viewport_width")
@@ -61,7 +61,7 @@ func _export_begin(features: PackedStringArray, is_debug: bool, path: String, fl
 						h = ProjectSettings.get_setting("display/window/size/viewport_height")
 					html = html.replace("__PARAMS__", "onclick=\"window.open('__GAME_HTML__', '_blank', 'popup,innerWidth=" + str(w) + ",innerHeight=" + str(h) + "'); return false;\"")
 				else:
-					html = html.replace("__PARAMS__", "target=\"_blank\"")
+					push_error("ERROR: invalid iframe breakout method")
 				html = html.replace("__GAME_HTML__", export_path.get_file())
 				html = html.replace("__TITLE__", ProjectSettings.get_setting("application/config/name"))
 				var file = FileAccess.open(export_path.get_base_dir().path_join("index.html"), FileAccess.WRITE)
