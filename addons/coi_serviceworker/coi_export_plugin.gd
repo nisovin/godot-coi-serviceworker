@@ -12,24 +12,26 @@ func _get_name() -> String:
 	return "CoiServiceWorker"
 
 func _get_export_options(platform: EditorExportPlatform) -> Array[Dictionary]:
-	return [
-		{
-			"option": {
-				"name": "include_coi_service_worker",
-				"type": TYPE_BOOL
+	if platform is EditorExportPlatformWeb:
+		return [
+			{
+				"option": {
+					"name": "include_coi_service_worker",
+					"type": TYPE_BOOL
+				},
+				"default_value": true
 			},
-			"default_value": true
-		},
-		{
-			"option": {
-				"name": "iframe_breakout",
-				"type": TYPE_STRING,
-				"hint": PROPERTY_HINT_ENUM,
-				"hint_string": "Disabled,Same Tab,New Tab,New Window"
-			},
-			"default_value": "Disabled"
-		}
-	]
+			{
+				"option": {
+					"name": "iframe_breakout",
+					"type": TYPE_STRING,
+					"hint": PROPERTY_HINT_ENUM,
+					"hint_string": "Disabled,Same Tab,New Tab,New Window"
+				},
+				"default_value": "Disabled"
+			}
+		]
+	return []
 
 func _should_update_export_options(platform: EditorExportPlatform) -> bool:
 	if not platform is EditorExportPlatformWeb: return false
