@@ -23,6 +23,10 @@ There is a good chance that any host that embeds your game in an iframe within a
 
 ## Version History
 
+### v1.2
+
+* Export options are now only visbible for web exports (thanks florianvazelle)
+
 ### v1.1
 
 * Now hides the SharedArrayBuffer error message on the intial load, before the service worker is loaded
