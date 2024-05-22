@@ -4,9 +4,11 @@ This plugin makes use of the [coi-serviceworker](https://github.com/gzuidhof/coi
 
 See also [this Godot proposal](https://github.com/godotengine/godot-proposals/issues/6616).
 
-## Important Note
+## Read This First: Alternatives
 
-If your web host allows you to set the proper headers, you should do that instead. For example, [itch.io](https://itch.io) and [Newgrounds](https://www.newgrounds.com) both have options to enable this feature (refered to as enabling SharedArrayBuffer support). You should only use this plugin if you are unable to configure the headers.
+1. If your web host allows you to set the proper headers, you should do that instead. For example, [itch.io](https://itch.io) and [Newgrounds](https://www.newgrounds.com) both have options to enable this feature (refered to as enabling SharedArrayBuffer support).
+2. In Godot 4.3, you can export a build that doesn't use threads. This should allow you to run your game without the cross-origin headers, which means you would not need this plugin. This may be a better alternative in many situations.
+3. Also in Godot 4.3, you can export a Progressive Web App (PWA), which will have the functionality of this plugin built-in.
 
 ## Usage
 
