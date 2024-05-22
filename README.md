@@ -7,8 +7,8 @@ See also [this Godot proposal](https://github.com/godotengine/godot-proposals/is
 ## Read This First: Alternatives
 
 1. If your web host allows you to set the proper headers, you should do that instead. For example, [itch.io](https://itch.io) and [Newgrounds](https://www.newgrounds.com) both have options to enable this feature (refered to as enabling SharedArrayBuffer support).
-2. In Godot 4.3, you can export a build that doesn't use threads. This should allow you to run your game without the cross-origin headers, which means you would not need this plugin. This may be a better alternative in many situations.
-3. Also in Godot 4.3, you can export a Progressive Web App (PWA), which will have the functionality of this plugin built-in.
+2. In Godot 4.3, you can export a build that doesn't use threads. This should allow you to run your game without the cross-origin headers, which means you would not need this plugin. This may be a better alternative in many situations. [More info here](https://godotengine.org/article/progress-report-web-export-in-4-3/#single-threaded-web-export)
+3. Also in Godot 4.3, you can export a Progressive Web App (PWA), which has the option to have the functionality of this plugin built-in. [More info here](https://godotengine.org/article/progress-report-web-export-in-4-3/#easy-coop-coep-pwa-for-threaded-builds)
 
 ## Usage
 
